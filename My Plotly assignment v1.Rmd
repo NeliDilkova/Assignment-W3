@@ -1,0 +1,34 @@
+---
+title: "Neli's interactive presentation using plotly"
+author: "Neli Dilkova-Gnoyke"
+date: "1 April 2019"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(plotly)
+library(ggplot2)
+library(dplyr)
+```
+
+## My intreactive plot using plotly
+Here, I generate two random normal distributions and overlay them in the plot.
+Hover over the plot to see the respective values.
+
+
+```{r, echo = FALSE}
+# Overlaid histogram of 2 vectors:
+graph=plot_ly(x = rnorm(800), opacity = 0.7, type = "histogram", name = "vector X") %>%
+    add_trace(x = rnorm(800)+1, name = "Vector Y") %>%
+    layout(barmode="overlay")%>%
+    layout(title = "Overlaid histogram example",
+         xaxis = list(title = "value brackets"),
+         yaxis = list(title = "frequency"))
+   
+graph
+
+```
+
+
+
